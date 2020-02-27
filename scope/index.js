@@ -71,7 +71,15 @@ const scope = {
 
     // Log D: number
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = ([{
+      A: 75
+    }, {
+      B: 64
+    }, {
+      C: 64
+    }, {
+      D: 30
+    }]);
     return result;
 
     // Annotation:
@@ -105,7 +113,15 @@ const scope = {
 
     // Log D: greeting
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = ([{
+      A: "Yo"
+    }, {
+      B: "Hey"
+    }, {
+      C: "Hey"
+    }, {
+      D: "Hello"
+    }]);
     return result;
 
     // Annotation:
@@ -139,7 +155,15 @@ const scope = {
 
     // Log D: greeting
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = ([{
+      A: "hi"
+    }, {
+      B: "welcome"
+    }, {
+      C: "welcome"
+    }, {
+      D: "howdy"
+    }]);
     return result;
 
     // Annotation:
@@ -171,7 +195,15 @@ const scope = {
 
     // Log D: name
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = ([{
+      C: "Brittany"
+    }, {
+      A: "Nathaniel"
+    }, {
+      B: "Nathaniel"
+    }, {
+      D: "Brittany"
+    }]);
     return result;
 
     // Annotation:
@@ -206,7 +238,17 @@ const scope = {
 
     // Log E: dog
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = ([{
+      A: "Spot"
+    }, {
+      B: "Spot"
+    }, {
+      C: "Biscuit"
+    }, {
+      D: "Biscuit"
+    }, {
+      E: "Biscuit"
+    }]);
     return result;
 
     // Annotation:

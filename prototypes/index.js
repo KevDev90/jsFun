@@ -876,15 +876,15 @@ const astronomyPrompts = {
     //     color: 'red' }
     // ]
 
-    const result = stars.reduce((acc, star) => {
-      let keys = Object.keys(constellations)
-      keys.forEach(key => {
-        if(constellations[key].stars.includes(star.name)) {
-          acc.push(star)
+    const result = stars.reduce((allStars, star) => {
+      let starKeys = Object.keys(constellations);
+      starKeys.forEach(key => {
+        if (constellations[key].stars.includes(star.name)) {
+          allStars.push(star);
         }
-      })
-      return acc
-    },[])
+      });
+      return allStars;
+    }, []);
     return result;
 
     // Annotation:
@@ -925,9 +925,13 @@ const astronomyPrompts = {
     //    "The Plow",
     //    "Orion",
     //    "The Little Dipper" ]
+    const result = stars
+      .sort((a, b) => {
+        return a.visualMagnitude - b.visualMagnitude;
+      })
+      .map(star => star.constellation)
+      .filter(star => star !== '');
 
-
-    const result = '';
     return result;
 
     // Annotation:
@@ -957,8 +961,13 @@ const ultimaPrompts = {
 
     // Return the sum of the amount of damage for all the weapons that our characters can use
     // Answer => 113
+    const result = characters.reduce((allDamage, hero) => {
+      hero.weapons.forEach(weapon => {
+        allDamage += weapons[weapon].damage;
+      });
+      return allDamage;
+    }, 0);
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
     return result;
 
     // Annotation:
@@ -969,9 +978,19 @@ const ultimaPrompts = {
 
     // Return the sum damage and total range for each character as an object.
     // ex: [ { Avatar: { damage: 27, range: 24 }, { Iolo: {...}, ...}
-
-    const result = 'REPLACE WITH YOUR RESULT HERE';
-    return result;
+    const result = characters.map(hero => {
+         const wObj = Object.keys(weapons).reduce((acc, currWeapon) => {
+             if (hero.weapons.includes(currWeapon)) {
+               acc.damage += weapons[currWeapon].damage;
+               acc.range += weapons[currWeapon].range;
+             }
+             return acc;
+           },
+           { damage: 0, range: 0 }
+         );
+         return { [hero.name]: wObj };
+       });
+       return result;
 
     // Annotation:
     // Write your annotation here as a comment
@@ -1006,8 +1025,12 @@ const dinosaurPrompts = {
     //   'Jurassic World': 11,
     //   'Jurassic World: Fallen Kingdom': 18
     // }
+    const result = movies.reduce((finalTitles, movie) => {
+      finalTitles[movie.title] = movie.dinos.filter(
+        dino => dinosaurs[dino].isAwesome).length;
+      return finalTitles;
+    }, {});
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
     return result;
 
     // Annotation:
@@ -1039,13 +1062,15 @@ const dinosaurPrompts = {
           }
       }
     */
+    let finalObj = {}
+    let innerObj = {}
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
-    return result;
+      const result = ''
+      return result;
 
-    // Annotation:
-    // Write your annotation here as a comment
-  },
+        // Annotation:
+        // Write your annotation here as a comment
+      },
 
   uncastActors() {
     /*
@@ -1072,8 +1097,20 @@ const dinosaurPrompts = {
         imdbStarMeterRating: 0
       }]
     */
+let obj = {}
+    const result = movies.reduce((finalArr, movie) => {
+      let humanKeys = Object.keys(humans)
+      humanKeys.forEach(key => {
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+         if(!movie.cast.includes(humans[key])) {
+           obj.name = key
+           obj.nationality = key.nationality
+           obj.imdbStarMeterRating = key.imdbStarMeterRating
+           finalArr.push(obj)
+         }
+      })
+      return finalArr
+    },[]);
     return result;
 
     // Annotation:
